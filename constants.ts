@@ -5,14 +5,16 @@ import { DropItemType, DropItemConfig } from './types';
 // ==========================================
 export const ASSETS = {
   // 图1：【首屏主图·本人出镜】—— 赛博审判长
-  // IMPORTANT: Save the image you provided as "judge.png" in your project root/public folder
-  heroImage: "./judge.png", 
+  // Added ?v=2 to force browser to re-fetch the image
+  heroImage: "/judge.png?v=2", 
   // 图2：【背景素材·纯环境】—— 未名湖·数据池
   glassContainerBg: "https://picsum.photos/800/1200?blur=5", 
   // 图4：【分隔插图·纯环境】—— 逻辑粉碎机
   shredderBg: "https://picsum.photos/1920/1080?grayscale",
   // 图5：【页脚配图·本人出镜】—— 真实的战友
-  outroImage: "https://picsum.photos/600/800",
+  // IMPORTANT: Ensure this matches your GitHub filename EXACTLY (case-sensitive!)
+  // If your file is .jpg, change this to .jpg
+  outroImage: "/outro.png?v=2",
 };
 
 export const DROP_ITEMS: Record<DropItemType, DropItemConfig> = {
@@ -73,7 +75,7 @@ export const TEXT_CONTENT = {
   },
   physics: {
     caseNumber: "案号 1204：关于斌哥生日资源分配的紧急仲裁",
-    instruction: "“陪审团请注意，本庭急需以下战略物资，请研发、测试、设计组同学火速提交。”"
+    instruction: "“陪审团请注意，本庭急需以下战略物资，请产品、研发、测试、设计组同学火速提交。”"
   },
   jury: {
     title: "陪审团合议 · 现场记录",
@@ -112,7 +114,7 @@ export const TEXT_CONTENT = {
       "也是最懂 AI 的逻辑守护者。",
       "感谢你，用法律人的严谨，",
       "给那些天马行空的想法筑起了地基；",
-      "感谢你，在每一个需求评审的午后，",
+      "感谢你，在每一个需求评审的背后，",
       "和我们一起死磕每一个细节。",
       "代码会迭代，产品会更新，",
       "但那些并肩作战的日子，将作为永久数据封存。",
