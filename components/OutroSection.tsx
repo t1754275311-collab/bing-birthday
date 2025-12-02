@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { TEXT_CONTENT, ASSETS } from '../constants';
 import { playSoundEffect } from '../services/audioService';
@@ -6,6 +6,7 @@ import { playSoundEffect } from '../services/audioService';
 export const OutroSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
     if (isInView) {
@@ -36,9 +37,22 @@ export const OutroSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.9, filter: "grayscale(100%)" }}
           animate={isInView ? { opacity: 1, scale: 1, filter: "grayscale(0%)" } : {}}
           transition={{ duration: 1.5, delay: 0.5 }}
-          className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-10 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl"
+          className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-10 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-slate-800 relative"
         >
-          <img src={ASSETS.outroImage} alt="Chen Bin Real" className="w-full h-full object-cover" />
+          {imgError ? (
+            <div className="w-full h-full flex flex-col items-center justify-center text-red-400 p-4 bg-slate-900">
+               <span className="text-2xl mb-2">⚠️</span>
+               <span className="text-xs font-mono break-all">图片未找到: {ASSETS.outroImage}</span>
+               <span className="text-[10px] mt-2 text-slate-500">请检查 GitHub public 文件夹及文件名大小写</span>
+            </div>
+          ) : (
+            <img 
+              src={ASSETS.outroImage} 
+              alt="Chen Bin Real" 
+              className="w-full h-full object-cover" 
+              onError={() => setImgError(true)}
+            />
+          )}
         </motion.div>
 
         {/* Text */}
