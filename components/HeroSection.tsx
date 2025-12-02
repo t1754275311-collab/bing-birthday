@@ -68,7 +68,8 @@ export const HeroSection: React.FC = () => {
         </motion.div>
 
         {/* Info Terminal */}
-        <div className="bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded p-4 w-full max-w-md text-left font-mono text-sm md:text-base text-green-400 shadow-xl">
+        {/* Changed text-left to text-center and added flex items-center to center content visually */}
+        <div className="bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded p-4 w-full max-w-md text-center font-mono text-sm md:text-base text-green-400 shadow-xl flex flex-col items-center">
           <TypingText text={TEXT_CONTENT.hero.name} delay={1500} speed={40} className="mb-2" />
           <TypingText text={TEXT_CONTENT.hero.codename} delay={2500} speed={30} className="mb-2" />
           <TypingText text={TEXT_CONTENT.hero.status} delay={4500} speed={50} className="text-yellow-400" />
